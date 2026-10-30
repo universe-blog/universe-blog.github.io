@@ -2,7 +2,7 @@
 
 The source for **Universe Blog**, a static site published with GitHub Pages.
 
-🌐 Live site: https://universe-blog-usa.github.io/universe-blog/
+🌐 Live site: https://universe-blog.github.io/
 
 ## Development
 
