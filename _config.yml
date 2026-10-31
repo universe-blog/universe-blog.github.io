@@ -1,0 +1,29 @@
+title: Universe Blog
+description: Website for users in the universe workgroup.
+author:
+  name: Eze Ahuna
+url: "https://universe-blog.github.io"
+baseurl: ""
+
+# Theme (GitHub Pages supported)
+theme: minima
+
+# Plugins (all whitelisted by GitHub Pages)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Pretty URLs, e.g. /2020/05/15/welcome-universe-users/
+permalink: /:year/:month/:day/:title/
+
+minima:
+  date_format: "%b %-d, %Y"
+  social_links: []
+
+# Files that should not be copied into the built site
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
