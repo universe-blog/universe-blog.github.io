@@ -1,0 +1,59 @@
+<!-- Light/dark theme toggle button, added to the masthead nav. -->
+<script>
+  (function () {
+    function current() {
+      return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+    function apply(t) {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+
+    var btn = document.createElement('button');
+    btn.id = 'theme-toggle';
+    btn.type = 'button';
+
+    function render() {
+      var dark = current() === 'dark';
+      btn.textContent = dark ? '☀️' : '🌙'; // sun : moon
+      var label = dark ? 'Switch to light mode' : 'Switch to dark mode';
+      btn.title = label;
+      btn.setAttribute('aria-label', label);
+    }
+
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem('color-theme', next); } catch (e) {}
+      render();
+    });
+
+    function mount() {
+      var nav = document.querySelector('.masthead .greedy-nav');
+      if (nav) {
+        var search = nav.querySelector('.search__toggle');
+        if (search) { nav.insertBefore(btn, search); }
+        else { nav.appendChild(btn); }
+      } else {
+        // Fallback: fixed button if the nav isn't present
+        btn.style.position = 'fixed';
+        btn.style.right = '1rem';
+        btn.style.bottom = '1rem';
+        btn.style.zIndex = '1000';
+        document.body.appendChild(btn);
+      }
+      render();
+    }
+
+    if (document.readyState !== 'loading') { mount(); }
+    else { document.addEventListener('DOMContentLoaded', mount); }
+
+    // Follow the OS setting live, but only until the visitor makes a choice.
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        try { if (localStorage.getItem('color-theme')) return; } catch (err) {}
+        apply(e.matches ? 'dark' : 'light');
+        render();
+      });
+    }
+  })();
+</script>

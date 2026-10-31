@@ -1,69 +1,113 @@
-<!-- Automatic dark mode: applied when the visitor's OS prefers dark.
-     Minimal Mistakes compiles a light skin at build time, so these rules
-     recolor the main surfaces at runtime via prefers-color-scheme. -->
-<style>
-@media (prefers-color-scheme: dark) {
-  :root { color-scheme: dark; }
+<!-- Theme handling: a data-theme attribute on <html> drives dark mode, set
+     either by the visitor's saved choice (theme toggle) or, with no saved
+     choice, by their OS prefers-color-scheme. Set early to avoid a flash. -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('color-theme');
+      var prefersDark = window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
 
-  body {
+<!-- Dark palette. Minimal Mistakes compiles a light skin at build time, so
+     these rules recolor the main surfaces when data-theme="dark". -->
+<style>
+  html[data-theme="dark"] { color-scheme: dark; }
+
+  html[data-theme="dark"] body {
     background-color: #14142b;
     color: #e6e6f0;
   }
 
   /* Masthead / navigation */
-  .masthead { border-bottom: 1px solid #2a2a4a; background-color: #14142b; }
-  .masthead__inner-wrap { }
-  .greedy-nav { background: #14142b; }
-  .greedy-nav a { color: #e6e6f0; }
-  .greedy-nav .visible-links a:before { background: #9b8cff; }
-  .greedy-nav__toggle .navicon,
-  .greedy-nav__toggle .navicon:before,
-  .greedy-nav__toggle .navicon:after { background: #e6e6f0; }
-  .greedy-nav .hidden-links { background: #1e1e3c; border-color: #2a2a4a; }
-  .greedy-nav .hidden-links a { color: #e6e6f0; }
-  .greedy-nav .hidden-links:before { border-bottom-color: #1e1e3c; }
-  .site-title, .site-subtitle { color: #f2f2fa; }
+  html[data-theme="dark"] .masthead { border-bottom: 1px solid #2a2a4a; background-color: #14142b; }
+  html[data-theme="dark"] .greedy-nav { background: #14142b; }
+  html[data-theme="dark"] .greedy-nav a { color: #e6e6f0; }
+  html[data-theme="dark"] .greedy-nav .visible-links a:before { background: #9b8cff; }
+  html[data-theme="dark"] .greedy-nav__toggle .navicon,
+  html[data-theme="dark"] .greedy-nav__toggle .navicon:before,
+  html[data-theme="dark"] .greedy-nav__toggle .navicon:after { background: #e6e6f0; }
+  html[data-theme="dark"] .greedy-nav .hidden-links { background: #1e1e3c; border-color: #2a2a4a; }
+  html[data-theme="dark"] .greedy-nav .hidden-links a { color: #e6e6f0; }
+  html[data-theme="dark"] .greedy-nav .hidden-links:before { border-bottom-color: #1e1e3c; }
+  html[data-theme="dark"] .site-title,
+  html[data-theme="dark"] .site-subtitle { color: #f2f2fa; }
 
   /* Headings & body text */
-  h1, h2, h3, h4, h5, h6,
-  .page__title, .archive__item-title,
-  .page__content { color: #f2f2fa; }
-  .page__content { color: #e6e6f0; }
-  .page__meta, .page__date, .page__taxonomy, .archive__item-excerpt,
-  .page__meta-readtime, .muted { color: #a9a9c8; }
+  html[data-theme="dark"] h1,
+  html[data-theme="dark"] h2,
+  html[data-theme="dark"] h3,
+  html[data-theme="dark"] h4,
+  html[data-theme="dark"] h5,
+  html[data-theme="dark"] h6,
+  html[data-theme="dark"] .page__title,
+  html[data-theme="dark"] .archive__item-title { color: #f2f2fa; }
+  html[data-theme="dark"] .page__content { color: #e6e6f0; }
+  html[data-theme="dark"] .page__meta,
+  html[data-theme="dark"] .page__date,
+  html[data-theme="dark"] .page__taxonomy,
+  html[data-theme="dark"] .archive__item-excerpt,
+  html[data-theme="dark"] .page__meta-readtime,
+  html[data-theme="dark"] .muted { color: #a9a9c8; }
 
   /* Links */
-  a { color: #a99bff; }
-  .page__content a { color: #a99bff; }
-  .page__content a:visited { color: #c0b4ff; }
+  html[data-theme="dark"] a,
+  html[data-theme="dark"] .page__content a { color: #a99bff; }
+  html[data-theme="dark"] .page__content a:visited { color: #c0b4ff; }
 
   /* Author sidebar */
-  .author__name { color: #f2f2fa; }
-  .author__bio, .author__urls a, .author__urls .fa { color: #c9c9e4; }
-  .author__urls { background-color: #1e1e3c; border-color: #2a2a4a; }
-  .author__urls:before { border-bottom-color: #1e1e3c; }
+  html[data-theme="dark"] .author__name { color: #f2f2fa; }
+  html[data-theme="dark"] .author__bio,
+  html[data-theme="dark"] .author__urls a,
+  html[data-theme="dark"] .author__urls .fa { color: #c9c9e4; }
+  html[data-theme="dark"] .author__urls { background-color: #1e1e3c; border-color: #2a2a4a; }
+  html[data-theme="dark"] .author__urls:before { border-bottom-color: #1e1e3c; }
 
   /* Footer */
-  .page__footer { background-color: #0f0f22; color: #c9c9e4; }
-  .page__footer a { color: #b3a7ff; }
-  .page__footer-follow .social-icons a,
-  .page__footer-copyright { color: #a9a9c8; }
+  html[data-theme="dark"] .page__footer { background-color: #0f0f22; color: #c9c9e4; }
+  html[data-theme="dark"] .page__footer a { color: #b3a7ff; }
+  html[data-theme="dark"] .page__footer-follow .social-icons a,
+  html[data-theme="dark"] .page__footer-copyright { color: #a9a9c8; }
 
   /* Code, quotes, rules, tables */
-  pre, code, .highlight, .highlighter-rouge .highlight {
+  html[data-theme="dark"] pre,
+  html[data-theme="dark"] code,
+  html[data-theme="dark"] .highlight,
+  html[data-theme="dark"] .highlighter-rouge .highlight {
     background-color: #0f0f22; color: #e6e6f0;
   }
-  blockquote { border-left-color: #9b8cff; color: #c9c9e4; }
-  hr { border-color: #2a2a4a; }
-  table { color: #e6e6f0; }
-  td, th { border-color: #2a2a4a; }
-  thead { border-bottom-color: #3a3a5c; }
+  html[data-theme="dark"] blockquote { border-left-color: #9b8cff; color: #c9c9e4; }
+  html[data-theme="dark"] hr { border-color: #2a2a4a; }
+  html[data-theme="dark"] table { color: #e6e6f0; }
+  html[data-theme="dark"] td,
+  html[data-theme="dark"] th { border-color: #2a2a4a; }
+  html[data-theme="dark"] thead { border-bottom-color: #3a3a5c; }
 
   /* Search */
-  .search-input { background-color: #0f0f22; color: #e6e6f0; }
-  .search-content { background-color: #14142b; }
+  html[data-theme="dark"] .search-input { background-color: #0f0f22; color: #e6e6f0; }
+  html[data-theme="dark"] .search-content { background-color: #14142b; }
 
   /* Notices / buttons */
-  .notice, .notice--primary, .notice--info { background-color: #1e1e3c; color: #e6e6f0; }
-}
+  html[data-theme="dark"] .notice,
+  html[data-theme="dark"] .notice--primary,
+  html[data-theme="dark"] .notice--info { background-color: #1e1e3c; color: #e6e6f0; }
+
+  /* Theme toggle button */
+  #theme-toggle {
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0 0.5em;
+    color: inherit;
+    align-self: center;
+  }
+  #theme-toggle:hover { opacity: 0.7; }
 </style>
