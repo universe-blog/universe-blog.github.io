@@ -1,9 +1,12 @@
 title: Universe Blog
 description: Website for users in the universe workgroup.
-author:
-  name: Eze Ahuna
+author: Eze Ahuna
 url: "https://universe-blog.github.io"
 baseurl: ""
+
+# Only these pages appear in the top navigation
+header_pages:
+  - about.md
 
 # Theme (GitHub Pages supported)
 theme: minima
