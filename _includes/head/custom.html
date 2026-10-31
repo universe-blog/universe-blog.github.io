@@ -1,0 +1,69 @@
+<!-- Automatic dark mode: applied when the visitor's OS prefers dark.
+     Minimal Mistakes compiles a light skin at build time, so these rules
+     recolor the main surfaces at runtime via prefers-color-scheme. -->
+<style>
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+
+  body {
+    background-color: #14142b;
+    color: #e6e6f0;
+  }
+
+  /* Masthead / navigation */
+  .masthead { border-bottom: 1px solid #2a2a4a; background-color: #14142b; }
+  .masthead__inner-wrap { }
+  .greedy-nav { background: #14142b; }
+  .greedy-nav a { color: #e6e6f0; }
+  .greedy-nav .visible-links a:before { background: #9b8cff; }
+  .greedy-nav__toggle .navicon,
+  .greedy-nav__toggle .navicon:before,
+  .greedy-nav__toggle .navicon:after { background: #e6e6f0; }
+  .greedy-nav .hidden-links { background: #1e1e3c; border-color: #2a2a4a; }
+  .greedy-nav .hidden-links a { color: #e6e6f0; }
+  .greedy-nav .hidden-links:before { border-bottom-color: #1e1e3c; }
+  .site-title, .site-subtitle { color: #f2f2fa; }
+
+  /* Headings & body text */
+  h1, h2, h3, h4, h5, h6,
+  .page__title, .archive__item-title,
+  .page__content { color: #f2f2fa; }
+  .page__content { color: #e6e6f0; }
+  .page__meta, .page__date, .page__taxonomy, .archive__item-excerpt,
+  .page__meta-readtime, .muted { color: #a9a9c8; }
+
+  /* Links */
+  a { color: #a99bff; }
+  .page__content a { color: #a99bff; }
+  .page__content a:visited { color: #c0b4ff; }
+
+  /* Author sidebar */
+  .author__name { color: #f2f2fa; }
+  .author__bio, .author__urls a, .author__urls .fa { color: #c9c9e4; }
+  .author__urls { background-color: #1e1e3c; border-color: #2a2a4a; }
+  .author__urls:before { border-bottom-color: #1e1e3c; }
+
+  /* Footer */
+  .page__footer { background-color: #0f0f22; color: #c9c9e4; }
+  .page__footer a { color: #b3a7ff; }
+  .page__footer-follow .social-icons a,
+  .page__footer-copyright { color: #a9a9c8; }
+
+  /* Code, quotes, rules, tables */
+  pre, code, .highlight, .highlighter-rouge .highlight {
+    background-color: #0f0f22; color: #e6e6f0;
+  }
+  blockquote { border-left-color: #9b8cff; color: #c9c9e4; }
+  hr { border-color: #2a2a4a; }
+  table { color: #e6e6f0; }
+  td, th { border-color: #2a2a4a; }
+  thead { border-bottom-color: #3a3a5c; }
+
+  /* Search */
+  .search-input { background-color: #0f0f22; color: #e6e6f0; }
+  .search-content { background-color: #14142b; }
+
+  /* Notices / buttons */
+  .notice, .notice--primary, .notice--info { background-color: #1e1e3c; color: #e6e6f0; }
+}
+</style>

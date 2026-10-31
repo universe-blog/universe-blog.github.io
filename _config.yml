@@ -1,30 +1,63 @@
 title: Universe Blog
+subtitle: Website for users in the universe workgroup.
+name: "Eze Ahuna"
 description: Website for users in the universe workgroup.
-author: Eze Ahuna
 url: "https://universe-blog.github.io"
 baseurl: ""
+repository: "universe-blog/universe-blog.github.io"
+locale: "en-US"
 
-# Only these pages appear in the top navigation
-header_pages:
-  - about.md
+# Theme (works on GitHub Pages via jekyll-remote-theme)
+remote_theme: mmistakes/minimal-mistakes
+minimal_mistakes_skin: "default"   # auto dark handled via _includes/head/custom.html
 
-# Theme (GitHub Pages supported)
-theme: minima
+# Client-side search in the masthead
+search: true
 
-# Plugins (all whitelisted by GitHub Pages)
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+# Reading
+words_per_minute: 200
 
 # Pretty URLs, e.g. /2020/05/15/welcome-universe-users/
 permalink: /:year/:month/:day/:title/
 
-minima:
-  date_format: "%b %-d, %Y"
-  social_links: []
+# Author profile (sidebar)
+author:
+  name: "Eze Ahuna"
+  bio: "Administrator of the Universe Blog."
+  avatar: "/media/website/cartoon_self.png"
 
-# Files that should not be copied into the built site
+footer:
+  links:
+    - label: "RSS"
+      icon: "fas fa-fw fa-rss-square"
+      url: "/feed.xml"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+  - jekyll-remote-theme
+
+# Defaults: posts and pages use the single layout with the author sidebar
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+      show_date: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
 exclude:
   - README.md
   - Gemfile
